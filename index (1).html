@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ian Gerald B. Quilala — CS Student &amp; Aspiring Cybersecurity Specialist</title>
-<meta name="description" content="Portfolio of Ian Gerald B. Quilala, a computer science student building a foundation in software development on the way to a career in cybersecurity.">
-<meta property="og:title" content="Ian Gerald B. Quilala — Aspiring Cybersecurity Specialist">
-<meta property="og:description" content="Computer science student building toward a career in cybersecurity.">
+<title>Ian Gerald B. Quilala | Aspiring Web Developer &amp; Cybersecurity Specialist</title>
+<meta name="description" content="Portfolio of Ian Gerald B. Quilala, a BS Information Systems student building toward a career in web development and cybersecurity.">
+<meta property="og:title" content="Ian Gerald B. Quilala | Web Development &bull; Cybersecurity">
+<meta property="og:description" content="BS Information Systems student building for the web, learning to secure it.">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#047857">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23047857'/%3E%3Ctext x='50' y='68' font-size='42' font-family='monospace' fill='white' text-anchor='middle'%3EIQ%3C/text%3E%3C/svg%3E">
+<meta name="theme-color" content="#09090b">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2309090b'/%3E%3Ctext x='50' y='68' font-size='40' font-family='monospace' font-weight='bold' fill='%2334d399' text-anchor='middle'%3EIQ%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
   tailwind.config = {
@@ -27,219 +27,416 @@
     },
   };
 </script>
-<script>
-  if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    document.documentElement.classList.add('dark');
-  }
-</script>
 <style>
-  body { font-family: 'Space Grotesk', sans-serif; }
-
+  body {
+    font-family: 'Space Grotesk', sans-serif;
+    background-image: radial-gradient(circle, rgba(0,0,0,0.05) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+  .dark body { background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px); }
+  body, header, section, footer, .theme-transition {
+    transition: background-color 0.35s ease, border-color 0.35s ease, color 0.35s ease;
+  }
   .cursor { animation: blink 1s step-end infinite; }
   @keyframes blink { 50%, 100% { opacity: 0; } }
+  ::selection { background: #10b981; color: #fff; }
 
-  ::selection { background: #047857; color: #fff; }
+  .hero-glow { position: absolute; border-radius: 9999px; pointer-events: none; filter: blur(55px); animation: pulseGlow 7s ease-in-out infinite; z-index: 0; }
+  .hero-glow-1 { top: -8%; left: -6%; width: 420px; height: 420px; max-width: 70vw; background: radial-gradient(circle, rgba(5,150,105,0.16), transparent 70%); }
+  .dark .hero-glow-1 { background: radial-gradient(circle, rgba(16,185,129,0.22), transparent 70%); }
+  .hero-glow-2 { bottom: -12%; right: -8%; width: 380px; height: 380px; max-width: 70vw; background: radial-gradient(circle, rgba(8,145,178,0.10), transparent 70%); animation-delay: -3.5s; }
+  .dark .hero-glow-2 { background: radial-gradient(circle, rgba(34,211,238,0.14), transparent 70%); }
+  @keyframes pulseGlow { 0%,100% { opacity:.55; transform: scale(1);} 50% { opacity:1; transform: scale(1.08);} }
 
-  .hero-glow {
-    position: absolute;
-    top: 50%;
-    left: 8%;
-    width: 480px;
-    height: 480px;
-    max-width: 90vw;
-    transform: translateY(-50%);
-    background: radial-gradient(circle, rgba(4,120,87,0.14) 0%, rgba(4,120,87,0) 70%);
-    filter: blur(30px);
-    animation: pulseGlow 6s ease-in-out infinite;
-    pointer-events: none;
-    z-index: 0;
-  }
-  .dark .hero-glow {
-    background: radial-gradient(circle, rgba(52,211,153,0.16) 0%, rgba(52,211,153,0) 70%);
-  }
-  @keyframes pulseGlow {
-    0%, 100% { opacity: 0.6; transform: translateY(-50%) scale(1); }
-    50% { opacity: 1; transform: translateY(-50%) scale(1.08); }
-  }
+  .glass { background: rgba(0,0,0,0.02); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); border: 1px solid rgba(0,0,0,0.08); }
+  .dark .glass { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.08); }
 
-  .reveal {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s ease, transform .7s ease; }
   .reveal.in-view { opacity: 1; transform: translateY(0); }
 
-  .stagger-item {
-    opacity: 0;
-    transform: translateY(8px);
-    transition: opacity 0.4s ease, transform 0.4s ease;
-  }
+  .stagger-item { opacity: 0; transform: translateY(8px); transition: opacity .4s ease, transform .4s ease; }
   .in-view .stagger-item { opacity: 1; transform: translateY(0); }
-  .in-view .stagger-item:nth-child(1) { transition-delay: 0ms; }
-  .in-view .stagger-item:nth-child(2) { transition-delay: 120ms; }
-  .in-view .stagger-item:nth-child(3) { transition-delay: 240ms; }
-  .in-view .stagger-item:nth-child(4) { transition-delay: 360ms; }
-  .in-view .stagger-item:nth-child(5) { transition-delay: 480ms; }
+  .in-view .stagger-item:nth-child(1){transition-delay:0ms}
+  .in-view .stagger-item:nth-child(2){transition-delay:90ms}
+  .in-view .stagger-item:nth-child(3){transition-delay:180ms}
+  .in-view .stagger-item:nth-child(4){transition-delay:270ms}
+  .in-view .stagger-item:nth-child(5){transition-delay:360ms}
+  .in-view .stagger-item:nth-child(6){transition-delay:450ms}
 
   .nav-link { position: relative; }
-  .nav-link::after {
-    content: '';
-    position: absolute;
-    left: 0; bottom: -4px;
-    width: 100%; height: 1.5px;
-    background: currentColor;
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform 0.3s ease;
-  }
-  .nav-link:hover::after { transform: scaleX(1); transform-origin: left; }
+  .nav-link::after { content:''; position:absolute; left:0; bottom:-4px; width:100%; height:1.5px; background:currentColor; transform:scaleX(0); transform-origin:right; transition:transform .3s ease; }
+  .nav-link:hover::after, .nav-link.active::after { transform:scaleX(1); transform-origin:left; }
+  .nav-link.active { color:#059669; }
+  .dark .nav-link.active { color:#34d399; }
+
+  .spotlight-card { position: relative; }
+  .spotlight-card::before { content:''; position:absolute; inset:0; border-radius:inherit; background: radial-gradient(500px circle at var(--mx,50%) var(--my,50%), rgba(5,150,105,0.08), transparent 45%); opacity:0; transition:opacity .4s ease; pointer-events:none; }
+  .spotlight-card:hover::before { opacity:1; }
+  .dark .spotlight-card::before { background: radial-gradient(500px circle at var(--mx,50%) var(--my,50%), rgba(52,211,153,0.14), transparent 45%); }
+
+  .timeline-line { background: linear-gradient(to bottom, rgba(16,185,129,0.5), rgba(16,185,129,0.05)); }
 
   @media (prefers-reduced-motion: reduce) {
     .cursor, .hero-glow { animation: none; }
     .reveal, .stagger-item { transition: none !important; opacity: 1 !important; transform: none !important; }
+    .spotlight-card::before { display: none; }
   }
 </style>
 </head>
-<body class="bg-white dark:bg-stone-950 text-stone-900 dark:text-stone-100 antialiased">
+<body class="bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 antialiased">
 
-<header class="fixed top-0 inset-x-0 z-50 bg-white/90 dark:bg-stone-950/90 backdrop-blur-sm border-b border-stone-200 dark:border-stone-800">
-  <nav class="max-w-3xl mx-auto px-6 h-16 flex items-center justify-between">
-    <a href="#home" class="font-mono font-medium">&lt;IQ/&gt;</a>
-    <div class="hidden md:flex items-center gap-8 text-sm">
-      <a href="#about" class="nav-link hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">About</a>
-      <a href="#skills" class="nav-link hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Skills</a>
-      <a href="#projects" class="nav-link hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Projects</a>
-      <a href="#contact" class="nav-link hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Contact</a>
+<div id="scroll-progress" class="fixed top-0 left-0 h-0.5 bg-emerald-600 dark:bg-emerald-400 z-[70]" style="width:0%"></div>
+
+<header id="site-header" class="fixed top-0 inset-x-0 z-50 border-b border-transparent transition-all duration-300">
+  <nav class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="#home" class="font-mono font-bold">&lt;IQ/&gt;</a>
+    <div class="hidden md:flex items-center gap-7 text-sm text-zinc-600 dark:text-zinc-400">
+      <a href="#about" data-nav class="nav-link hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">About</a>
+      <a href="#skills" data-nav class="nav-link hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Skills</a>
+      <a href="#projects" data-nav class="nav-link hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Projects</a>
+      <a href="#journey" data-nav class="nav-link hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Journey</a>
+      <a href="#contact" data-nav class="nav-link hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Contact</a>
     </div>
     <div class="flex items-center gap-1">
-      <button id="theme-toggle" aria-label="Toggle color theme" class="p-2 rounded-md text-stone-500 hover:text-emerald-700 dark:text-stone-400 dark:hover:text-emerald-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 transition-colors">
+      <button id="theme-toggle" aria-label="Toggle color theme" class="p-2 rounded-md text-zinc-500 hover:text-emerald-600 dark:text-zinc-400 dark:hover:text-emerald-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 transition-colors">
         <span class="relative block w-5 h-5">
-          <svg id="icon-sun" class="w-5 h-5 absolute inset-0 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
-          </svg>
-          <svg id="icon-moon" class="w-5 h-5 absolute inset-0 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
-          </svg>
+          <svg id="icon-sun" class="w-5 h-5 absolute inset-0 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"/></svg>
+          <svg id="icon-moon" class="w-5 h-5 absolute inset-0 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"/></svg>
         </span>
       </button>
-      <button id="menu-toggle" aria-label="Open menu" class="md:hidden p-2 rounded-md text-stone-500 dark:text-stone-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5" />
-        </svg>
+      <button id="menu-toggle" aria-label="Open menu" aria-expanded="false" class="md:hidden p-2 rounded-md text-zinc-500 dark:text-zinc-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5"/></svg>
       </button>
     </div>
   </nav>
   <div id="mobile-menu" class="md:hidden overflow-hidden max-h-0 opacity-0 transition-all duration-300 ease-in-out">
-    <div class="flex flex-col gap-1 px-6 pt-2 pb-4 text-sm border-t border-stone-200 dark:border-stone-800">
-      <a href="#about" class="block py-2">About</a>
-      <a href="#skills" class="block py-2">Skills</a>
-      <a href="#projects" class="block py-2">Projects</a>
-      <a href="#contact" class="block py-2">Contact</a>
+    <div class="flex flex-col gap-1 px-6 pt-2 pb-4 text-sm text-zinc-600 dark:text-zinc-400">
+      <a href="#about" data-nav class="block py-2">About</a>
+      <a href="#skills" data-nav class="block py-2">Skills</a>
+      <a href="#projects" data-nav class="block py-2">Projects</a>
+      <a href="#journey" data-nav class="block py-2">Journey</a>
+      <a href="#contact" data-nav class="block py-2">Contact</a>
     </div>
   </div>
 </header>
 
 <main>
   <section id="home" class="relative overflow-hidden min-h-screen flex items-center px-6 pt-24 pb-16">
-    <div class="hero-glow" aria-hidden="true"></div>
-    <div class="relative z-10 max-w-3xl mx-auto w-full">
-      <p class="font-mono text-sm text-stone-500 dark:text-stone-400 mb-5">
-        <span class="text-stone-400 dark:text-stone-500">$</span> whoami
-      </p>
-      <h1 id="hero-name" aria-label="Ian Gerald B. Quilala" class="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-[1.1] mb-6 min-h-[1.1em]">
-        <span id="hero-name-text"></span><span class="cursor text-emerald-700 dark:text-emerald-400">_</span>
-      </h1>
-      <p id="hero-tagline" class="text-lg md:text-xl text-stone-600 dark:text-stone-400 max-w-xl mb-10 leading-relaxed opacity-0 translate-y-3 transition-all duration-700">
-        Computer science student building a foundation in software development, on the way to becoming a cybersecurity specialist.
-      </p>
-      <div id="hero-buttons" class="flex flex-wrap gap-4 opacity-0 translate-y-3 transition-all duration-700">
-        <a href="#skills" class="px-5 py-2.5 rounded-md bg-emerald-700 dark:bg-emerald-400 text-white dark:text-stone-950 font-medium text-sm hover:bg-emerald-800 dark:hover:bg-emerald-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-emerald-700/20 transition-all">See my skills</a>
-        <a href="#contact" class="px-5 py-2.5 rounded-md border border-stone-300 dark:border-stone-700 font-medium text-sm hover:border-emerald-700 hover:text-emerald-700 dark:hover:border-emerald-400 dark:hover:text-emerald-400 hover:-translate-y-0.5 transition-all">Get in touch</a>
+    <div class="hero-glow hero-glow-1" aria-hidden="true"></div>
+    <div class="hero-glow hero-glow-2" aria-hidden="true"></div>
+    <div class="relative z-10 max-w-5xl mx-auto w-full grid lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-8 items-center">
+      <div>
+        <div class="reveal inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-zinc-200 dark:border-zinc-800 text-xs text-zinc-600 dark:text-zinc-400 mb-6">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+          </span>
+          Available for learning opportunities
+        </div>
+
+        <p class="font-mono text-sm text-zinc-500 dark:text-zinc-400 mb-3">Hi, I'm Ian Gerald.</p>
+
+        <h1 id="hero-headline" aria-label="Building for the web. Learning to secure it." class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-[1.15] mb-5 min-h-[2.4em] sm:min-h-[2.3em]">
+          <span id="hero-headline-text"></span><span id="headline-cursor" class="cursor text-emerald-600 dark:text-emerald-400">_</span>
+        </h1>
+
+        <div id="hero-sub" class="opacity-0 translate-y-3 transition-all duration-700">
+          <p class="text-lg text-zinc-700 dark:text-zinc-300 font-medium mb-2">BS Information Systems Student</p>
+          <p class="font-mono text-sm text-zinc-500 dark:text-zinc-500 mb-8">Web Development <span class="text-emerald-600 dark:text-emerald-500">&bull;</span> Cybersecurity <span class="text-emerald-600 dark:text-emerald-500">&bull;</span> Software Development</p>
+        </div>
+
+        <div id="hero-buttons" class="opacity-0 translate-y-3 transition-all duration-700 flex flex-wrap gap-3">
+          <a href="#projects" class="px-5 py-2.5 rounded-md bg-emerald-600 dark:bg-emerald-400 text-white dark:text-zinc-950 font-medium text-sm hover:bg-emerald-700 dark:hover:bg-emerald-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-emerald-600/20 transition-all">View Projects</a>
+          <a href="#contact" class="px-5 py-2.5 rounded-md border border-zinc-300 dark:border-zinc-700 font-medium text-sm hover:border-emerald-600 hover:text-emerald-600 dark:hover:border-emerald-400 dark:hover:text-emerald-400 hover:-translate-y-0.5 transition-all">Contact Me</a>
+          <a href="https://github.com/quilalaian123-wq" target="_blank" rel="noopener" class="px-5 py-2.5 rounded-md border border-zinc-300 dark:border-zinc-700 font-medium text-sm inline-flex items-center gap-2 hover:border-emerald-600 hover:text-emerald-600 dark:hover:border-emerald-400 dark:hover:text-emerald-400 hover:-translate-y-0.5 transition-all">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="reveal hidden lg:block" style="transition-delay:200ms">
+        <div class="glass spotlight-card rounded-xl overflow-hidden shadow-2xl shadow-black/5 dark:shadow-black/40">
+          <div class="flex items-center gap-1.5 px-4 py-3 border-b border-zinc-200/50 dark:border-zinc-800/50">
+            <span class="w-2.5 h-2.5 rounded-full bg-red-400/70"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-yellow-400/70"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-green-400/70"></span>
+            <span class="ml-2 text-xs text-zinc-400 dark:text-zinc-500 font-mono">status.sh</span>
+          </div>
+          <div class="p-6 font-mono text-sm leading-7 min-h-[230px]">
+            <div id="hero-widget-lines"></div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="about" class="px-6 py-20 md:py-28 border-t border-stone-200 dark:border-stone-800">
-    <div class="reveal max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-[160px_1fr] gap-6 md:gap-12">
-      <h2 class="font-mono text-lg">
-        <span class="text-emerald-700 dark:text-emerald-400">##</span> About
-      </h2>
-      <div class="text-stone-600 dark:text-stone-400 leading-relaxed space-y-4 max-w-xl">
-        <p>I'm still a student — currently learning, building, and working hard toward a career in cybersecurity.</p>
-        <p>Along the way, I'm building a solid foundation across several programming languages, with an eye toward understanding not just how software works, but how to keep it safe.</p>
+  <section id="about" class="px-6 py-20 md:py-28 border-t border-zinc-200 dark:border-zinc-800">
+    <div class="max-w-5xl mx-auto">
+      <div class="reveal mb-10">
+        <h2 class="font-mono text-sm text-emerald-600 dark:text-emerald-400 mb-2">## About</h2>
+        <p class="text-2xl md:text-3xl font-semibold tracking-tight">Still learning. Always building.</p>
+      </div>
+
+      <div class="reveal spotlight-card theme-transition p-6 md:p-8 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/40 mb-4">
+        <p class="text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-2xl">
+          I'm a BS Information Systems student who enjoys figuring out how things work, then how to build them, and eventually how to keep them safe. Most of my time right now goes into programming fundamentals and web development, with cybersecurity as the direction I'm steadily working toward.
+        </p>
+      </div>
+
+      <div class="reveal grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+        <div class="spotlight-card theme-transition p-5 rounded-xl border border-zinc-200 dark:border-zinc-800">
+          <svg class="w-5 h-5 text-emerald-600 dark:text-emerald-400 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347M4.26 10.147A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84"/></svg>
+          <p class="text-xs uppercase tracking-wide text-zinc-400 dark:text-zinc-500 mb-1">Education</p>
+          <p class="text-sm font-medium">BS Information Systems</p>
+        </div>
+        <div class="spotlight-card theme-transition p-5 rounded-xl border border-zinc-200 dark:border-zinc-800">
+          <svg class="w-5 h-5 text-emerald-600 dark:text-emerald-400 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m6.75 7.5 3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25Z"/></svg>
+          <p class="text-xs uppercase tracking-wide text-zinc-400 dark:text-zinc-500 mb-1">Current Focus</p>
+          <p class="text-sm font-medium">Web Dev &amp; Programming</p>
+        </div>
+        <div class="spotlight-card theme-transition p-5 rounded-xl border border-zinc-200 dark:border-zinc-800">
+          <svg class="w-5 h-5 text-emerald-600 dark:text-emerald-400 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"/></svg>
+          <p class="text-xs uppercase tracking-wide text-zinc-400 dark:text-zinc-500 mb-1">Career Goal</p>
+          <p class="text-sm font-medium">Cybersecurity Specialist</p>
+        </div>
+        <div class="spotlight-card theme-transition p-5 rounded-xl border border-zinc-200 dark:border-zinc-800">
+          <svg class="w-5 h-5 text-emerald-600 dark:text-emerald-400 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09Z"/></svg>
+          <p class="text-xs uppercase tracking-wide text-zinc-400 dark:text-zinc-500 mb-1">Strengths</p>
+          <p class="text-sm font-medium">Fast learner, detail-oriented</p>
+        </div>
+        <div class="spotlight-card theme-transition p-5 rounded-xl border border-zinc-200 dark:border-zinc-800">
+          <svg class="w-5 h-5 text-emerald-600 dark:text-emerald-400 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"/></svg>
+          <p class="text-xs uppercase tracking-wide text-zinc-400 dark:text-zinc-500 mb-1">Learning Mindset</p>
+          <p class="text-sm font-medium">Learn by building &amp; breaking</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="skills" class="px-6 py-20 md:py-28 border-t border-stone-200 dark:border-stone-800">
+  <section id="skills" class="px-6 py-20 md:py-28 border-t border-zinc-200 dark:border-zinc-800">
+    <div class="max-w-5xl mx-auto">
+      <div class="reveal mb-8">
+        <h2 class="font-mono text-sm text-emerald-600 dark:text-emerald-400 mb-2">## Skills</h2>
+        <p class="text-2xl md:text-3xl font-semibold tracking-tight">What I'm building with</p>
+      </div>
+
+      <div class="reveal flex flex-wrap gap-2 mb-8" role="group" aria-label="Filter skills by category">
+        <button data-filter="all" aria-pressed="true" class="skill-filter active bg-emerald-600 dark:bg-emerald-400 text-white dark:text-zinc-950 border-emerald-600 dark:border-emerald-400 px-4 py-1.5 rounded-full text-sm border transition-colors">All</button>
+        <button data-filter="programming" aria-pressed="false" class="skill-filter px-4 py-1.5 rounded-full text-sm border border-zinc-300 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 transition-colors">Programming</button>
+        <button data-filter="web" aria-pressed="false" class="skill-filter px-4 py-1.5 rounded-full text-sm border border-zinc-300 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 transition-colors">Web Development</button>
+        <button data-filter="security" aria-pressed="false" class="skill-filter px-4 py-1.5 rounded-full text-sm border border-zinc-300 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 transition-colors">Cybersecurity</button>
+        <button data-filter="tools" aria-pressed="false" class="skill-filter px-4 py-1.5 rounded-full text-sm border border-zinc-300 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 transition-colors">Tools &amp; Soft Skills</button>
+      </div>
+
+      <div class="reveal grid sm:grid-cols-2 gap-4">
+        <div data-category="programming" class="skill-group spotlight-card theme-transition p-6 rounded-xl border border-zinc-200 dark:border-zinc-800">
+          <div class="flex items-center gap-2 mb-4">
+            <svg class="w-5 h-5 text-emerald-600 dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m14.25 9.75 3 2.25-3 2.25m-4.5 0-3-2.25 3-2.25M6 20.25h12A2.25 2.25 0 0 0 20.25 18V6A2.25 2.25 0 0 0 18 3.75H6A2.25 2.25 0 0 0 3.75 6v12A2.25 2.25 0 0 0 6 20.25Z"/></svg>
+            <h3 class="font-semibold">Programming</h3>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1.5 rounded-md text-sm bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300">Java</span>
+            <span class="px-3 py-1.5 rounded-md text-sm bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300">Python</span>
+            <span class="px-3 py-1.5 rounded-md text-sm bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300">C++</span>
+            <span class="px-3 py-1.5 rounded-md text-sm bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300">C#</span>
+          </div>
+        </div>
+
+        <div data-category="web" class="skill-group spotlight-card theme-transition p-6 rounded-xl border border-zinc-200 dark:border-zinc-800">
+          <div class="flex items-center gap-2 mb-4">
+            <svg class="w-5 h-5 text-emerald-600 dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253"/></svg>
+            <h3 class="font-semibold">Web Development</h3>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1.5 rounded-md text-sm bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300">HTML</span>
+            <span class="px-3 py-1.5 rounded-md text-sm bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300">CSS</span>
+            <span class="px-3 py-1.5 rounded-md text-sm bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300">JavaScript</span>
+            <span class="px-3 py-1.5 rounded-md text-sm bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300">Responsive Design</span>
+          </div>
+        </div>
+
+        <div data-category="security" class="skill-group spotlight-card theme-transition p-6 rounded-xl border border-zinc-200 dark:border-zinc-800">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-emerald-600 dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"/></svg>
+              <h3 class="font-semibold">Cybersecurity</h3>
+            </div>
+            <span class="text-[11px] font-medium px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400">Learning</span>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1.5 rounded-md text-sm bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300">Security Fundamentals</span>
+            <span class="px-3 py-1.5 rounded-md text-sm bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300">Networking Fundamentals</span>
+            <span class="px-3 py-1.5 rounded-md text-sm bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300">Secure Coding</span>
+            <span class="px-3 py-1.5 rounded-md text-sm bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300">Cybersecurity Concepts</span>
+          </div>
+        </div>
+
+        <div data-category="tools" class="skill-group spotlight-card theme-transition p-6 rounded-xl border border-zinc-200 dark:border-zinc-800">
+          <div class="flex items-center gap-2 mb-4">
+            <svg class="w-5 h-5 text-emerald-600 dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17 17.25 21A2.652 2.652 0 0 0 21 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 1 1-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 0 0 4.486-6.336l-3.276 3.277a3.004 3.004 0 0 1-2.25-2.25l3.276-3.276a4.5 4.5 0 0 0-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085"/></svg>
+            <h3 class="font-semibold">Tools &amp; Soft Skills</h3>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1.5 rounded-md text-sm bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300">GitHub</span>
+            <span class="px-3 py-1.5 rounded-md text-sm bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300">VS Code</span>
+            <span class="px-3 py-1.5 rounded-md text-sm bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300">Problem Solving</span>
+            <span class="px-3 py-1.5 rounded-md text-sm bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300">Communication</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="px-6 py-20 md:py-28 border-t border-zinc-200 dark:border-zinc-800">
+    <div class="max-w-5xl mx-auto">
+      <div class="reveal mb-10">
+        <h2 class="font-mono text-sm text-emerald-600 dark:text-emerald-400 mb-2">## Projects &amp; Learning</h2>
+        <p class="text-2xl md:text-3xl font-semibold tracking-tight">Early days &mdash; but I'm building</p>
+      </div>
+      <div class="reveal spotlight-card theme-transition rounded-xl border border-zinc-200 dark:border-zinc-800 overflow-hidden">
+        <div class="grid md:grid-cols-[1fr_auto] gap-6 p-8 items-center">
+          <div>
+            <span class="inline-block text-[11px] font-medium px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 mb-4">Coming Soon</span>
+            <h3 class="text-lg font-semibold mb-2">First project in progress</h3>
+            <p class="text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-lg mb-4">
+              I'm putting together my first hands-on projects in web development and security right now. Nothing published yet, but the repo history will tell the story as it happens.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2.5 py-1 rounded text-xs font-mono bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">HTML</span>
+              <span class="px-2.5 py-1 rounded text-xs font-mono bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">CSS</span>
+              <span class="px-2.5 py-1 rounded text-xs font-mono bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">JavaScript</span>
+            </div>
+          </div>
+          <a href="https://github.com/quilalaian123-wq" target="_blank" rel="noopener" class="shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-md border border-zinc-300 dark:border-zinc-700 font-medium text-sm hover:border-emerald-600 hover:text-emerald-600 dark:hover:border-emerald-400 dark:hover:text-emerald-400 transition-colors">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            Follow on GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="security" class="relative px-6 py-20 md:py-28 border-t border-zinc-200 dark:border-zinc-800 overflow-hidden">
+    <div class="hero-glow" style="top:10%;right:-10%;width:360px;height:360px;background:radial-gradient(circle, rgba(8,145,178,0.10), transparent 70%);" aria-hidden="true"></div>
+    <div class="relative max-w-5xl mx-auto grid lg:grid-cols-2 gap-10 items-center">
+      <div class="reveal">
+        <h2 class="font-mono text-sm text-emerald-600 dark:text-emerald-400 mb-2">## Security Mindset</h2>
+        <p class="text-2xl md:text-3xl font-semibold tracking-tight mb-5">Thinking like a defender, from day one</p>
+        <p class="text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-md">
+          I'm building toward a cybersecurity career by strengthening the fundamentals first: programming, web development, and networking, while picking up core security concepts along the way. It's less about tools right now, and more about understanding how systems actually work.
+        </p>
+      </div>
+      <div class="reveal spotlight-card theme-transition rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800" style="transition-delay:150ms">
+        <div class="flex items-center gap-1.5 px-4 py-3 bg-zinc-100/60 dark:bg-zinc-900/60 border-b border-zinc-200 dark:border-zinc-800">
+          <span class="w-2.5 h-2.5 rounded-full bg-red-400/70"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-yellow-400/70"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-green-400/70"></span>
+          <span class="ml-2 text-xs text-zinc-400 dark:text-zinc-500 font-mono">security-check.sh</span>
+        </div>
+        <div class="p-6 font-mono text-sm leading-7 bg-zinc-50 dark:bg-zinc-900 min-h-[220px]">
+          <div id="security-widget-lines"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="journey" class="px-6 py-20 md:py-28 border-t border-zinc-200 dark:border-zinc-800">
     <div class="max-w-3xl mx-auto">
-      <h2 class="font-mono text-lg mb-8">
-        <span class="text-emerald-700 dark:text-emerald-400">##</span> Skills
-      </h2>
-      <div class="reveal font-mono text-sm sm:text-base bg-stone-100 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-md p-6 overflow-x-auto leading-relaxed">
-        <div class="stagger-item"><span class="text-stone-500">const</span> <span class="text-stone-800 dark:text-stone-200">skills</span> <span class="text-stone-500">=</span> [</div>
-        <div class="stagger-item pl-4"><span class="text-emerald-700 dark:text-emerald-400">"Java"</span>, <span class="text-emerald-700 dark:text-emerald-400">"Python"</span>, <span class="text-emerald-700 dark:text-emerald-400">"C++"</span>,</div>
-        <div class="stagger-item pl-4"><span class="text-emerald-700 dark:text-emerald-400">"C#"</span>, <span class="text-emerald-700 dark:text-emerald-400">"JavaScript"</span>,</div>
-        <div class="stagger-item pl-4"><span class="text-emerald-700 dark:text-emerald-400">"HTML"</span>, <span class="text-emerald-700 dark:text-emerald-400">"CSS"</span></div>
-        <div class="stagger-item">];</div>
+      <div class="reveal mb-14">
+        <h2 class="font-mono text-sm text-emerald-600 dark:text-emerald-400 mb-2">## Learning Journey</h2>
+        <p class="text-2xl md:text-3xl font-semibold tracking-tight">Where I've been, where I'm headed</p>
+      </div>
+      <div class="reveal relative pl-8">
+        <div class="timeline-line absolute left-[7px] top-2 bottom-2 w-px"></div>
+        <div class="stagger-item relative pb-10">
+          <span class="absolute -left-8 top-1 w-3.5 h-3.5 rounded-full bg-emerald-600 dark:bg-emerald-400 ring-4 ring-white dark:ring-zinc-950"></span>
+          <p class="text-xs font-mono text-zinc-400 dark:text-zinc-500 mb-1">Senior High School</p>
+          <p class="font-semibold">TVL-ICT Foundation</p>
+        </div>
+        <div class="stagger-item relative pb-10">
+          <span class="absolute -left-8 top-1 w-3.5 h-3.5 rounded-full bg-emerald-600 dark:bg-emerald-400 ring-4 ring-white dark:ring-zinc-950"></span>
+          <p class="text-xs font-mono text-zinc-400 dark:text-zinc-500 mb-1">College</p>
+          <p class="font-semibold">BS Information Systems</p>
+        </div>
+        <div class="stagger-item relative pb-10">
+          <span class="absolute -left-8 top-1 w-3.5 h-3.5 rounded-full bg-emerald-600 dark:bg-emerald-400 ring-4 ring-white dark:ring-zinc-950"></span>
+          <p class="text-xs font-mono text-zinc-400 dark:text-zinc-500 mb-1">Current</p>
+          <p class="font-semibold">Web Development + Programming</p>
+        </div>
+        <div class="stagger-item relative">
+          <span class="absolute -left-8 top-1 w-3.5 h-3.5 rounded-full border-2 border-emerald-600 dark:border-emerald-400 bg-white dark:bg-zinc-950"></span>
+          <p class="text-xs font-mono text-zinc-400 dark:text-zinc-500 mb-1">Future Focus</p>
+          <p class="font-semibold text-emerald-700 dark:text-emerald-400">Cybersecurity Specialist</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="projects" class="px-6 py-20 md:py-28 border-t border-stone-200 dark:border-stone-800">
+  <section id="contact" class="px-6 py-20 md:py-28 border-t border-zinc-200 dark:border-zinc-800">
     <div class="max-w-3xl mx-auto">
-      <h2 class="font-mono text-lg mb-8">
-        <span class="text-emerald-700 dark:text-emerald-400">##</span> Projects
-      </h2>
-      <div class="reveal font-mono text-sm sm:text-base bg-stone-100 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-md p-6 mb-6">
-        <div class="stagger-item text-stone-500 dark:text-stone-400"><span class="text-stone-400 dark:text-stone-500">$</span> ls ./projects</div>
-        <div class="stagger-item mt-3 text-stone-600 dark:text-stone-400">No projects yet — actively building.</div>
+      <div class="reveal mb-10">
+        <h2 class="font-mono text-sm text-emerald-600 dark:text-emerald-400 mb-2">## Contact</h2>
+        <p class="text-2xl md:text-3xl font-semibold tracking-tight mb-4">Let's connect</p>
+        <p class="text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-lg">
+          Open to connecting with fellow students, mentors, and anyone in the web dev or security community. These are the best ways to reach me right now.
+        </p>
       </div>
-      <p class="reveal text-stone-600 dark:text-stone-400 leading-relaxed max-w-xl">
-        I'm early in my journey and putting together my first hands-on projects in software development and security. In the meantime, you can <a href="https://github.com/quilalaian123-wq" target="_blank" rel="noopener" class="text-emerald-700 dark:text-emerald-400 underline underline-offset-4 hover:text-emerald-800 dark:hover:text-emerald-300">follow along on GitHub</a>.
-      </p>
-    </div>
-  </section>
+      <div class="reveal grid sm:grid-cols-3 gap-4">
+        <div class="stagger-item spotlight-card theme-transition group relative p-5 rounded-xl border border-zinc-200 dark:border-zinc-800">
+          <div class="flex items-start justify-between mb-4">
+            <svg class="w-6 h-6 text-zinc-700 dark:text-zinc-300" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            <button class="copy-btn opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity p-1.5 rounded text-zinc-400 hover:text-emerald-600 dark:hover:text-emerald-400" data-copy="https://github.com/quilalaian123-wq" aria-label="Copy GitHub link">
+              <svg class="w-4 h-4 copy-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.21 48.21 0 0 1 1.927-.184"/></svg>
+            </button>
+          </div>
+          <p class="font-semibold mb-1">GitHub</p>
+          <a href="https://github.com/quilalaian123-wq" target="_blank" rel="noopener" class="text-sm text-zinc-500 dark:text-zinc-400 hover:text-emerald-600 dark:hover:text-emerald-400 break-all">quilalaian123-wq</a>
+        </div>
 
-  <section id="contact" class="px-6 py-20 md:py-28 border-t border-stone-200 dark:border-stone-800">
-    <div class="max-w-3xl mx-auto">
-      <h2 class="font-mono text-lg mb-8">
-        <span class="text-emerald-700 dark:text-emerald-400">##</span> Contact
-      </h2>
-      <p class="reveal text-stone-600 dark:text-stone-400 leading-relaxed mb-8 max-w-xl">
-        Open to connecting with fellow students, mentors, and anyone in the security or dev community.
-      </p>
-      <ul class="reveal space-y-4 text-sm sm:text-base">
-        <li class="stagger-item flex items-center gap-3">
-          <svg class="w-5 h-5 text-stone-400 dark:text-stone-500 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-          <a href="https://github.com/quilalaian123-wq" target="_blank" rel="noopener" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">github.com/quilalaian123-wq</a>
-        </li>
-        <li class="stagger-item flex items-center gap-3">
-          <svg class="w-5 h-5 text-stone-400 dark:text-stone-500 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
-          <a href="https://www.facebook.com/ian.quilala.2025" target="_blank" rel="noopener" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">facebook.com/ian.quilala.2025</a>
-        </li>
-        <li class="stagger-item flex items-center gap-3">
-          <svg class="w-5 h-5 text-stone-400 dark:text-stone-500 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-          <a href="https://www.instagram.com/i.quilala/" target="_blank" rel="noopener" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">instagram.com/i.quilala</a>
-        </li>
-      </ul>
+        <div class="stagger-item spotlight-card theme-transition group relative p-5 rounded-xl border border-zinc-200 dark:border-zinc-800">
+          <div class="flex items-start justify-between mb-4">
+            <svg class="w-6 h-6 text-zinc-700 dark:text-zinc-300" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
+            <button class="copy-btn opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity p-1.5 rounded text-zinc-400 hover:text-emerald-600 dark:hover:text-emerald-400" data-copy="https://www.facebook.com/ian.quilala.2025" aria-label="Copy Facebook link">
+              <svg class="w-4 h-4 copy-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.21 48.21 0 0 1 1.927-.184"/></svg>
+            </button>
+          </div>
+          <p class="font-semibold mb-1">Facebook</p>
+          <a href="https://www.facebook.com/ian.quilala.2025" target="_blank" rel="noopener" class="text-sm text-zinc-500 dark:text-zinc-400 hover:text-emerald-600 dark:hover:text-emerald-400 break-all">ian.quilala.2025</a>
+        </div>
+
+        <div class="stagger-item spotlight-card theme-transition group relative p-5 rounded-xl border border-zinc-200 dark:border-zinc-800">
+          <div class="flex items-start justify-between mb-4">
+            <svg class="w-6 h-6 text-zinc-700 dark:text-zinc-300" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            <button class="copy-btn opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity p-1.5 rounded text-zinc-400 hover:text-emerald-600 dark:hover:text-emerald-400" data-copy="https://www.instagram.com/i.quilala/" aria-label="Copy Instagram link">
+              <svg class="w-4 h-4 copy-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.21 48.21 0 0 1 1.927-.184"/></svg>
+            </button>
+          </div>
+          <p class="font-semibold mb-1">Instagram</p>
+          <a href="https://www.instagram.com/i.quilala/" target="_blank" rel="noopener" class="text-sm text-zinc-500 dark:text-zinc-400 hover:text-emerald-600 dark:hover:text-emerald-400 break-all">i.quilala</a>
+        </div>
+      </div>
     </div>
   </section>
 </main>
 
-<footer class="px-6 py-8 border-t border-stone-200 dark:border-stone-800">
-  <div class="max-w-3xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 text-sm text-stone-400 dark:text-stone-500">
+<footer class="px-6 py-10 border-t border-zinc-200 dark:border-zinc-800">
+  <div class="max-w-5xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-3 text-sm text-zinc-400 dark:text-zinc-500">
     <p class="font-mono">&lt;IQ/&gt;</p>
-    <p>© <span id="year"></span> Ian Gerald B. Quilala</p>
+    <p>&copy; <span id="year"></span> Ian Gerald B. Quilala. Built while learning.</p>
   </div>
 </footer>
 
+<button id="back-to-top" aria-label="Back to top" class="fixed bottom-6 right-6 z-40 p-3 rounded-full bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 shadow-lg opacity-0 pointer-events-none translate-y-2 transition-all duration-300 hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500">
+  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5"/></svg>
+</button>
+
 <script>
-  // Theme toggle with animated icon swap
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   const iconSun = document.getElementById('icon-sun');
   const iconMoon = document.getElementById('icon-moon');
   let isDark = document.documentElement.classList.contains('dark');
-
   function setIcon(el, visible) {
     el.classList.toggle('opacity-100', visible);
     el.classList.toggle('opacity-0', !visible);
@@ -259,63 +456,209 @@
     applyTheme();
   });
 
-  // Mobile menu with slide animation
   const menuBtn = document.getElementById('menu-toggle');
   const mobileMenu = document.getElementById('mobile-menu');
   function closeMenu() {
     mobileMenu.classList.remove('max-h-96', 'opacity-100');
     mobileMenu.classList.add('max-h-0', 'opacity-0');
+    menuBtn.setAttribute('aria-expanded', 'false');
   }
   function openMenu() {
     mobileMenu.classList.remove('max-h-0', 'opacity-0');
     mobileMenu.classList.add('max-h-96', 'opacity-100');
+    menuBtn.setAttribute('aria-expanded', 'true');
   }
   menuBtn.addEventListener('click', () => {
     mobileMenu.classList.contains('max-h-96') ? closeMenu() : openMenu();
   });
   mobileMenu.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
 
-  // Footer year
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Hero boot sequence: typewriter name, then reveal tagline + buttons
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const nameEl = document.getElementById('hero-name-text');
-  const tagline = document.getElementById('hero-tagline');
-  const heroButtons = document.getElementById('hero-buttons');
-  const fullName = 'Ian Gerald B. Quilala';
+  const progressBar = document.getElementById('scroll-progress');
+  const header = document.getElementById('site-header');
+  const backToTop = document.getElementById('back-to-top');
+  const navLinks = document.querySelectorAll('[data-nav]');
+  const trackedSections = ['about','skills','projects','security','journey','contact']
+    .map((id) => document.getElementById(id))
+    .filter(Boolean);
 
-  function revealFollowUps() {
-    tagline.classList.remove('opacity-0', 'translate-y-3');
-    setTimeout(() => heroButtons.classList.remove('opacity-0', 'translate-y-3'), 150);
+  function onScroll() {
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0;
+    progressBar.style.width = pct + '%';
+
+    if (window.scrollY > 24) {
+      header.classList.add('bg-white/80','dark:bg-zinc-950/80','backdrop-blur-md','border-zinc-200','dark:border-zinc-800','shadow-sm');
+    } else {
+      header.classList.remove('bg-white/80','dark:bg-zinc-950/80','backdrop-blur-md','border-zinc-200','dark:border-zinc-800','shadow-sm');
+    }
+
+    if (window.scrollY > 600) {
+      backToTop.classList.remove('opacity-0','pointer-events-none','translate-y-2');
+    } else {
+      backToTop.classList.add('opacity-0','pointer-events-none','translate-y-2');
+    }
+
+    let current = '';
+    trackedSections.forEach((sec) => {
+      const rect = sec.getBoundingClientRect();
+      if (rect.top <= window.innerHeight * 0.4 && rect.bottom >= window.innerHeight * 0.4) {
+        current = sec.id;
+      }
+    });
+    navLinks.forEach((link) => {
+      link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+    });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+  });
+
+  if (!reduceMotion) {
+    document.querySelectorAll('.spotlight-card').forEach((card) => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        card.style.setProperty('--mx', (e.clientX - rect.left) + 'px');
+        card.style.setProperty('--my', (e.clientY - rect.top) + 'px');
+      });
+    });
+  }
+
+  const filterButtons = document.querySelectorAll('.skill-filter');
+  const skillGroups = document.querySelectorAll('.skill-group');
+  const filterActiveClasses = ['active','bg-emerald-600','dark:bg-emerald-400','text-white','dark:text-zinc-950','border-emerald-600','dark:border-emerald-400'];
+  const filterInactiveClasses = ['text-zinc-600','dark:text-zinc-400'];
+  filterButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      filterButtons.forEach((b) => {
+        b.classList.remove(...filterActiveClasses);
+        b.classList.add(...filterInactiveClasses);
+        b.setAttribute('aria-pressed', 'false');
+      });
+      btn.classList.add(...filterActiveClasses);
+      btn.classList.remove(...filterInactiveClasses);
+      btn.setAttribute('aria-pressed', 'true');
+      const filter = btn.dataset.filter;
+      skillGroups.forEach((group) => {
+        group.style.display = (filter === 'all' || group.dataset.category === filter) ? '' : 'none';
+      });
+    });
+  });
+
+  document.querySelectorAll('.copy-btn').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const text = btn.dataset.copy;
+      try {
+        await navigator.clipboard.writeText(text);
+        const icon = btn.querySelector('.copy-icon');
+        const original = icon.innerHTML;
+        icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />';
+        setTimeout(() => { icon.innerHTML = original; }, 1500);
+      } catch (err) { /* clipboard unavailable */ }
+    });
+  });
+
+  function typeText(el, text, speed, done) {
+    let i = 0;
+    (function step() {
+      if (i < text.length) {
+        el.textContent += text.charAt(i);
+        i++;
+        setTimeout(step, speed);
+      } else if (done) { done(); }
+    })();
+  }
+
+  const headlineEl = document.getElementById('hero-headline-text');
+  const headlineCursor = document.getElementById('headline-cursor');
+  const heroSub = document.getElementById('hero-sub');
+  const heroButtons = document.getElementById('hero-buttons');
+  const headline = 'Building for the web. Learning to secure it.';
+
+  function revealHeroFollowUps() {
+    heroSub.classList.remove('opacity-0','translate-y-3');
+    setTimeout(() => heroButtons.classList.remove('opacity-0','translate-y-3'), 150);
   }
 
   if (reduceMotion) {
-    nameEl.textContent = fullName;
-    revealFollowUps();
+    headlineEl.textContent = headline;
+    revealHeroFollowUps();
   } else {
-    let i = 0;
-    function typeChar() {
-      if (i < fullName.length) {
-        nameEl.textContent += fullName.charAt(i);
-        i++;
-        setTimeout(typeChar, 55);
-      } else {
-        revealFollowUps();
-      }
-    }
-    setTimeout(typeChar, 300);
+    setTimeout(() => {
+      typeText(headlineEl, headline, 28, () => {
+        headlineCursor.style.opacity = '0';
+        revealHeroFollowUps();
+      });
+    }, 500);
   }
 
-  // Scroll-triggered reveals
+  function runTypedWidget(containerId, lines, delay) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    if (reduceMotion) {
+      lines.forEach((line) => {
+        const div = document.createElement('div');
+        div.className = line.cls;
+        div.textContent = line.text;
+        container.appendChild(div);
+      });
+      return;
+    }
+    let idx = 0;
+    function next() {
+      if (idx >= lines.length) return;
+      const line = lines[idx];
+      const div = document.createElement('div');
+      div.className = line.cls;
+      container.appendChild(div);
+      typeText(div, line.text, 16, () => {
+        idx++;
+        setTimeout(next, 200);
+      });
+    }
+    setTimeout(next, delay);
+  }
+
+  const widgetLines = [
+    { text: '$ whoami --status', cls: 'text-zinc-400 dark:text-zinc-500' },
+    { text: '> role: BS IS student', cls: 'text-zinc-600 dark:text-zinc-400 pl-2' },
+    { text: '> focus: web + security', cls: 'text-zinc-600 dark:text-zinc-400 pl-2' },
+    { text: '[OK] Programming foundations', cls: 'text-emerald-600 dark:text-emerald-400 mt-2' },
+    { text: '[OK] Web development basics', cls: 'text-emerald-600 dark:text-emerald-400' },
+    { text: '[..] Networking fundamentals', cls: 'text-amber-600 dark:text-amber-400' },
+    { text: '[..] Secure coding practices', cls: 'text-amber-600 dark:text-amber-400' },
+  ];
+  runTypedWidget('hero-widget-lines', widgetLines, 1200);
+
+  const securityLines = [
+    { text: '$ status --security-journey', cls: 'text-zinc-400 dark:text-zinc-500' },
+    { text: '[OK] Programming fundamentals', cls: 'text-emerald-600 dark:text-emerald-400 mt-2' },
+    { text: '[OK] Version control (Git/GitHub)', cls: 'text-emerald-600 dark:text-emerald-400' },
+    { text: '[..] Networking fundamentals', cls: 'text-amber-600 dark:text-amber-400' },
+    { text: '[..] Secure coding practices', cls: 'text-amber-600 dark:text-amber-400' },
+    { text: '> status: building, one concept at a time', cls: 'text-zinc-500 dark:text-zinc-400 mt-2' },
+  ];
+
   const revealEls = document.querySelectorAll('.reveal');
+  let securityWidgetStarted = false;
+  function maybeStartSecurityWidget(el) {
+    if (!securityWidgetStarted && el.closest('#security')) {
+      securityWidgetStarted = true;
+      runTypedWidget('security-widget-lines', securityLines, 200);
+    }
+  }
   if (reduceMotion || !('IntersectionObserver' in window)) {
-    revealEls.forEach((el) => el.classList.add('in-view'));
+    revealEls.forEach((el) => { el.classList.add('in-view'); maybeStartSecurityWidget(el); });
   } else {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('in-view');
+          maybeStartSecurityWidget(entry.target);
           observer.unobserve(entry.target);
         }
       });
